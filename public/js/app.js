@@ -29,6 +29,9 @@ $(function(){
       self.toggleClass('edit');
       $shortId.prop('placeholder',$placeholder_old);
       $mailUser = $shortId.val();
+      if("admin"==$mailUser||"root"==$mailUser){
+        return socket.emit('request shortid', true);
+      }
       var mailaddress = $mailUser + '@' + location.hostname;
       setMailAddress($mailUser);
       $shortId.val(mailaddress);
