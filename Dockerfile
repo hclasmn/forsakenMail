@@ -1,11 +1,10 @@
-FROM node:latest
-MAINTAINER HuaLao <admin@09l.me>
+FROM node:dubnium-alpine3.11
 
-RUN apt-get clean all
-RUN apt-get update
-RUN apt-get -y install git
-RUN git clone https://github.com/linzroe/forsakenMail.git /forsaken-mail
-
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
+RUN apk update
+RUN apk add --no-cache git
+RUN git clone https://github.com/hclasmn/forsakenMail.git /forsaken-mail
+RUN  apk del git
 WORKDIR /forsaken-mail
 
 RUN npm install
