@@ -1,3 +1,4 @@
+```
 version: "3"
 services:
   forsaken-mail:
@@ -7,3 +8,4 @@ services:
       - "8084:3000"
       - "25:25"
     restart: always
+```
